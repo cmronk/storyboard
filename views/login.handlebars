@@ -1,0 +1,55 @@
+<header>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper grey darken-4">
+        <a href="#top" class="brand-logo right">
+          <i class="material-icons">local_library</i>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h2>Please Login!</h2>
+      <form id="signup" name="signup" method="post" action="/login">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mail</i>
+            <input id="email" type="email" class="validate">
+            <label for="icon_mail">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="password" type="password" name="password">
+            <label for="icon_lock">Password</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-dark deep-purple darken-2" id="login" type="submit">Login
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- jquery and complied scripts for materialize -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+  <script>
+    //not sure how we want this handled
+    $("#login").on("click", function(event){
+      event.preventDefault();
+
+      var loginInfo = {
+        email: $("#email").val().trim(),
+        password: $("#password").val().trim()
+      }
+    });
+
+  </script>
