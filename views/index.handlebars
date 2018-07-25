@@ -242,7 +242,7 @@
                     <span class="card-title grey-text text-darken-4">Sci-Fi
                         <i class="material-icons right">close</i>
                     </span>
-                    <p>Aliens...</p>
+                    <a target="_blank" href="https://www.independent.co.uk/news/science/moon-alien-life-proof-latest-research-study-lunar-surface-extraterrestrial-a8460506.html">Aliens...</a>
                     <p>Time Travel</p>
                     <p>Dystopian society</p>
                 </div>
@@ -464,7 +464,8 @@
             characterList: $(".character").val().trim(),
             //role: $(".role").val().trim(),
             imageurl: $(".imgurl").val().trim(),
-            story: $(".storyline").val().trim()
+            story: $(".storyline").val().trim(),
+            genre: $(".genre").val().trim(),
         };
             // Send an AJAX POST-request with jQuery
         $.post("/api/story", newStoryline)
