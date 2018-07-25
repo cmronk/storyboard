@@ -121,7 +121,7 @@
             <h5>{{ message }}</h5>
             
             <blockquote red accent-4>
-                <h1 id="stories">Storyboard</h1>
+                <h1 id="stories">Storyboard Adventures</h1>
             </blockquote>
             <!-- Figure out how we want this displayed -->
             {{!_________________________________________user input modal_________________________________________________--}}
@@ -200,13 +200,13 @@
                 </div>
             </div>    
 
-            <h4>Chosen Genre: <span id="chosen-genre"></span></h4>
+            {{!-- <h4>Chosen Genre: <span id="chosen-genre"></span></h4> --}}
 
             <h3>Current Story</h3>
             <hr>
               {{#each Storyboards}} 
                 {{!-- <h5><span class="label">Hello, my name is  </span> {{this.characterList}}.</h5> --}}
-                </h5><img src="{{this.imageurl}}" max-height=300px max-width=400 height=auto width=auto>
+                </h5><img src="{{this.imageurl}}" height=300px width=400px>
                 <h5>{{this.story}}</h5>
 
                 {{!-- <a class="waves-effect waves-light btn"><i class="material-icons left">border_color</i>Edit</a>
