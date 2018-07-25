@@ -11,7 +11,7 @@ module.exports = function(passport, user) {
   // used to deserialize the user
   passport.deserializeUser(function(id, done) {
     User.findById(id).then(function(user) {
-      if (user) {
+      if (req.user) {
         done(null, user.get());
       } else {
         done(user.errors, null);
@@ -34,7 +34,7 @@ module.exports = function(passport, user) {
         };
 
         User.findOne({ where: { email: email } }).then(function(user) {
-          if (user) {
+          if (req.user) {
             return done(null, false, {
               message: "That email is already taken"
             });

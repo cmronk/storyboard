@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
     })
   );
 
-  // app.get('/dashboard',isLoggedIn, authController.dashboard);
+  app.get("/index", isLoggedIn, authController.dashboard);
 
   // app.get('/logout',authController.logout);
 
@@ -22,7 +22,9 @@ module.exports = function(app, passport) {
   //   ));
 
   function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
+    if (req.isAuthenticated()) {
+      return next();
+    }
 
     res.redirect("/signup");
   }
