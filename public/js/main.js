@@ -1,16 +1,3 @@
-var like = 0;
-var dislike = 0;
-
-$("#thumbs_up").on("click", function () {
-    like++;
-    $(".like").text(like);
-});
-
-$("#thumbs_down").on("click", function () {
-    dislike--;
-    $(".dislike").text(dislike);
-});
-
 // this functions is for the materialize navbar, scrolling backgrounds in about section and the form
 $(document).ready(function () {
     $(".modal").modal();
@@ -91,10 +78,17 @@ $("#create").on("click", function (event) {
         });
 });
 
-// function checkPasswords() {
-//     var firstPassword = $("#password").val();
-//     var matchPassword = $("#password-math").val();
-//     if (firstPassword != matchPassword){
-//     }
-// }
+var like = 0;
+var dislike = 0;
+
+$("#thumbs_up").on("click", function () {
+    like++;
+    $(".like").text(like);
+});
+
+$("#thumbs_down").on("click", function () {
+    dislike--;
+    $(".dislike").text(dislike);
+});
+
 
