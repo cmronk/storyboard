@@ -1,0 +1,335 @@
+{{!_____________________________________________________nav bar_______________________________________________________--}}
+<header>
+    <div id="top">
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper grey darken-4">
+                    <a href="#top" class="brand-logo right">
+                        <i class="material-icons">local_library</i>
+                    </a>
+                    <ul>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                            <i class="material-icons">menu</i>
+                        </a>
+
+                    </ul>
+                    <ul class="left hide-on-med-and-down">
+                        <li>
+                            <h5 class="left-align">
+                                <a class="waves-effect waves-red btn modal-trigger blue lighten-3" a href="/logout">Logout</a>
+                            </h5>
+                        </li>
+                        <li>
+                            <a href="#stories">Stories</a>
+                        </li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#chat-socket">Chat</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <h5 class="left-align">
+                    <a class="waves-effect waves-yellow btn modal-trigger blue lighten-3" a href="/">Logout</a>
+                </h5>
+            </li>
+            <li>
+                <a href="#stories">Stories</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#chat-socket">Chat</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+{{!-- this may come in useful if we need to truncate text   <h4 class="truncate">This is an extremely long title that will be truncated</h4>
+ --}}
+
+<main>
+    <div class="row">
+        <div class="col s12 m8 l9">
+
+            <h5> {{ message }}</h5>
+
+            <blockquote red accent-4>
+                <h1 id="stories">Storyboard Adventures</h1>
+            </blockquote>
+            <!-- Modal Trigger -->
+            <div class="actions">
+                <a class="waves-effect waves-orange btn pulse modal-trigger grey darken-2" href="#modal2">
+                    <i class="material-icons left">create</i>Create a Story!</a>
+                 </div>
+
+            {{!-- We will ultimately get this info from our user input and database --}}
+            <h4>Your Current Characters:</h4>
+            <hr>
+            <ul>
+                {{#each Storyboards}}
+                <li>
+                    <h5>
+                        <span class="label"></span> {{this.characterList}}</h5>
+                </li>
+                {{/each}}
+            </ul>
+            <!-- Modal 2 Structure -->
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Let's begin!</h4>
+
+                    <div class="row">
+                        <form class="col s12" class="add-story">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">art_track</i>
+                                    <select class="icons genre">
+                                        <option value="" disabled selected>Choose your genre.</option>
+                                        <option value="Sci-Fi" data-icon="img/scifi.jpg">Sci-Fi</option>
+                                        <option value="Classics" data-icon="img/art.jpg">Classics</option>
+                                        <option value="Mystery" data-icon="img/mystery.jpeg">Mystery</option>
+                                        <option value="Kids" data-icon="img/kids.jpg">Kids</option>
+                                        <option value="History" data-icon="img/history.jpg">History</option>
+                                        <option value="Other" data-icon="img/main.jpeg">Other</option>
+                                    </select>
+                                    <label for="icon_art_track">Genre</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">face</i>
+                                    <input class="character" type="text" data-length="20" class="validate">
+                                    <label for="icon_face">Character Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">assignment_ind</i>
+                                    <input class="role" type="text" data-length="20" class="validate">
+                                    <label for="icon_assignment_ind">Role</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">camera_alt</i>
+                                    <label for="icon_camera_alt">URL Picture of Character. Leave this blank if you prefer not to choose a photo.</label>
+                                    <input class="imgurl" type="url" class="validate">
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <input class="storyline" type="text" class="materialize-textarea" data-length="300">
+                                    </textarea>
+                                    <label for="icon_mode_edit">Write your story.</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn modal-action modal-close waves-effect waves-dark deep-purple darken-2" type="submit" id="create">Add Story Now.
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Current Story</h3>
+            <hr>{{#each Storyboards}} 
+            </h5>{{#if imageurl}}
+            <img src="{{this.imageurl}}" height=300px width=400px>{{/if}}
+            <h5>{{this.story}}</h5>
+
+            {{!--
+            <a class="waves-effect waves-light btn">
+                <i class="material-icons left">border_color</i>Edit</a>
+            <a class="waves-effect waves-light btn">
+                <i class="material-icons left">delete_forever</i>Delete</a> --}} {{/each}}
+            <br>
+            <br>
+            <div class="feedback">
+                <a class="waves-effect waves-green btn grey darken-2" id="thumbs_up">
+                    <i class="material-icons left">thumb_up</i>Like this?<span class="like badge white-text"></span></a> 
+                <a class="waves-effect waves-red btn grey darken-2" id="thumbs_down">
+                    <i class="material-icons left">thumb_down</i>Not a fan?<span class="dislike badge white-text"></span></a> 
+            </div>
+        </div>
+
+
+        {{!_________________________________________________genre sidebar_______________________________________________________--}}
+        <div class="col s12 m4 l3">
+            <h4 id="genres">
+                Genres & Inspiration
+            </h4>
+
+            <div class="card teal lighten-2 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/scifi.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Sci-Fi
+                        <i class="material-icons right">nfc</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Sci-Fi
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <a target="_blank" href="https://www.independent.co.uk/news/science/moon-alien-life-proof-latest-research-study-lunar-surface-extraterrestrial-a8460506.html">Aliens...</a>
+                    <p>Time Travel</p>
+                    <p>Dystopian society</p>
+                </div>
+            </div>
+            <div class="card light-green lighten-3 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/art.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Classics
+                        <i class="material-icons right">palette</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Classics
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>To be or not to be?</p>
+                    <p>Hope and the search for truth</p>
+                    <p>Endurance</p>
+                </div>
+            </div>
+            <div class="card yellow lighten-3 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/mystery.jpeg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Mystery
+                        <i class="material-icons right">fingerprint</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Mystery
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>Who dunnit?</p>
+                    <p>Detectives</p>
+                    <p>Forensics</p>
+                </div>
+            </div>
+            <div class="card orange darken-1 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/kids.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Kids
+                        <i class="material-icons right">child_friendly</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Kids
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>One fish, two fish, red fish, blue fish.</p>
+                    <p>Friendship</p>
+                    <p>Identity</p>
+                </div>
+            </div>
+            <div class="card red darken-1 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/history.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">History
+                        <i class="material-icons right">hourglass_full</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">History
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>Circa 1886, blah, blah, blah</p>
+                    <p>Wars</p>
+                    <p>Famine</p>
+                </div>
+            </div>
+            <div class="card pink lighten-3 pulse">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="img/main.jpeg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Other
+                        <i class="material-icons right">gesture</i>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Other
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>Do you have something else in mind???</p>
+                    <p>Write whatever you please.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{!_________________________________________________about section_______________________________________________________--}}
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="img/background.jpeg">
+        </div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header" id="about">Create a story</h2>
+            <h5 class="grey-text text-darken-3 lighten-3">Create stories with users around the globe.</h5>
+            <h5>Lorem ipsum dolor amet jianbing leggings sint, raclette mixtape ramps flannel sustainable tofu lomo vexillologist
+                ethical. Quinoa in dreamcatcher pour-over pabst chicharrones. Salvia schlitz esse hammock food truck swag
+                taxidermy slow-carb. Cloud bread iceland post-ironic quinoa fanny pack viral pug listicle locavore umami
+                drinking vinegar kogi esse vinyl venmo. Locavore voluptate typewriter YOLO, ugh enamel pin beard sed retro
+                vape cillum twee fam.</h5>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="img/background1.jpeg">
+        </div>
+    </div>
+
+    {{!_________________________________________________socket.io div_______________________________________________________--}}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3>Chat</h3>
+                <ul class="pages" id="chat-socket">
+                    <li class="chat page">
+                        <div class="chatArea">
+                            <ul class="messages"></ul>
+                        </div>
+                        <input class="inputMessage" placeholder="Chat in this area..." />
+                    </li>
+                    <li class="login page">
+                        <div class="form">
+                            <h5 class="title">Please enter username to chat.</h5>
+                            <input class="usernameInput" type="text" maxlength="14" placeholder="Your username here" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{{!_________________________________________________generic footer______________________________________________________--}}
+<footer class="page-footer grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 CDHRS
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

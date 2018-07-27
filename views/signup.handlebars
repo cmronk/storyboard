@@ -1,0 +1,68 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <a href="#top" class="brand-logo right">
+                    <i class="material-icons">local_library</i>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h3>Please create an account to contribute.</h3>
+
+    <div class="row">
+        <form class="col s12" id="signup" name="signup" method="post" action="/signup">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_box</i>
+                    <input id="first_name" type="text" name="firstname" class="validate">
+                    <label for="icon_account_box" class="active">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_box</i>
+                    <input id="last_name" type="text" name="lastname" class="validate">
+                    <label for="icon_account_box" class="active">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="username" type="text" name="username" class="validate">
+                    <label for="assignment_ind" class="active">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="password" type="password" name="password" data-error="Passwords do not match." data-success="Passwords match."
+                        class="validate">
+                    <label for="icon_lock" class="active">Password</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="password-match" type="password" name="passwordMatch" data-error="Passwords do not match." data-success="Passwords match."
+                        class="validate">
+                    <label for="icon_lock" class="active">Re-Enter Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mail</i>
+                    <input id="email" type="email" name="email" class="validate">
+                    <label for="icon_mail" class="active">Email</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-yellow deep-purple darken-2" id="new-account" type="submit" value="Sign Up">Create Account
+                <i class="material-icons right">send</i>
+            </button>
+            <p>Already have an account?
+                <a href="/signin">Login</a>
+            </p>
+        </form>
+
+    </div>
+
+    {{message}}

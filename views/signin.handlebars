@@ -1,0 +1,46 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <a href="#top" class="brand-logo right">
+                    <i class="material-icons">local_library</i>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>Please Login!</h3>
+
+            <form id="signin" name="signin" method="post" action="signin">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mail</i>
+                        <input id="email" name="email" type="email" class="validate">
+                        <label for="icon_mail">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" name="password" type="password" name="password">
+                        <label for="icon_lock">Password</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-dark deep-purple darken-2" type="submit" value="Sign In">Login
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+            <p>Don't have an account yet?
+                <a href="/signup">Signup Here!</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+{{message}}
+
