@@ -33,11 +33,11 @@ $("#new-account").on("click", function (event) {
             .trim()
     };
 
-    $("#first_name").val(""),
-        $("#last_name").val(""),
-        $("#username").val(""),
-        $("#password").val(""),
-        $("#email").val("");
+    // $("#first_name").val(""),
+    //     $("#last_name").val(""),
+    //     $("#username").val(""),
+    //     $("#password").val(""),
+    //     $("#email").val("");
 
     // Send an AJAX POST-request with jQuery
     $.post("/signup", newUser)

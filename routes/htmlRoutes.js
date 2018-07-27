@@ -5,15 +5,6 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
 
-  app.get("/signin", function (req, res) {
-    res.render("signin", {
-    });
-  });
-
-  app.get("/signup", function (req, res) {
-    res.render("signup", { message: "Thank you for registering" });
-  });
-
   // Load example page and pass in an example by id
   app.get("/main/:id", function (req, res) {
     db.Storyboard.findOne({
@@ -24,12 +15,6 @@ module.exports = function (app) {
       });
     });
   });
-
-  // login screen
-  app.get("/signin", function (req, res) {
-    res.render("signin", { message: "Welcome Back!" });
-  });
-
 
   // Load dashboard page
   app.get("/dashboard", function (req, res) {

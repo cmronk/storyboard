@@ -15,6 +15,8 @@ module.exports = function (app, passport) {
       });
     });
   });
+  
+  app.get('/dashboard', isLoggedIn, authController.dashboard);
 
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/dashboard',
@@ -23,7 +25,6 @@ module.exports = function (app, passport) {
   }
   ));
 
-  app.get('/dashboard', isLoggedIn, authController.dashboard);
 
   app.get('/logout', authController.logout);
 

@@ -32,31 +32,4 @@ module.exports = function(app) {
       res.json(dbStoryboard);
     });
   });
-// Users
-  // Get all stories
-  app.get("/api/user", function(req, res) {
-    db.User.findAll({}).then(function(dbStoryboard) {
-      res.json(dbStoryboard);
-    });
-  });
-
-  
-  // Create a new user
-  app.post("/api/user", function(req, res) {
-    db.User.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    }).then(function(dbStoryboard) {
-      res.json(dbStoryboard);
-    });
-    console.log(newUser);
-  });
-
-
-
-
-
 };
