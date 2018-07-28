@@ -12,7 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <!-- materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- jquery and complied scripts for materialize -->
+        <script src="https://code.jquery.com/jquery.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
     <style>
         body {
             display: flex;
@@ -43,10 +48,11 @@
         .input-field label {
             pointer-events: all;
         }
-        #chat-socket {
-            
-        }
-        #signin-container, #signup-container {
+
+        #chat-socket {}
+
+        #signin-container,
+        #signup-container {
             border: 1px solid black;
             background: #fafafa;
             margin-top: 120px;
@@ -60,9 +66,6 @@
     {{{body}}}
 </body>
 
-<!-- jquery and complied scripts for materialize -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+
 </html>

@@ -76,7 +76,7 @@ $("#thumbs_down").on("click", function () {
 });
 
 // socket
-var io = io("http://localhost");
+
 $(function () {
     var socket = io.connect();
     var $messageForm = $("#messageForm");
@@ -101,8 +101,6 @@ $(function () {
     $userForm.submit(function (event) {
         event.preventDefault();
         socket.emit("new user", $username.val(), function (data) {
-            $messageArea.hide();
-
             if (data) {
                 $userFormArea.hide();
                 $messageArea.show();
@@ -114,9 +112,11 @@ $(function () {
     socket.on("get users", function (data) {
         var html = "";
         for (i = 0; i < data.length; i++) {
-            html += '<li class="list-group-item">' + data[i] + '</li>';
+            html += '<li class="list-group-item">' + data[i] +'</li>';
         }
         $users.html(html);
         console.log(users);
     });
+
+
 })
