@@ -75,7 +75,8 @@ $("#thumbs_down").on("click", function () {
     $(".dislike").text(dislike);
 });
 
-// Socket
+// socket
+var io = io("http://localhost");
 $(function () {
     var socket = io.connect();
     var $messageForm = $("#messageForm");

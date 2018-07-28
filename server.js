@@ -25,12 +25,17 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+// server.listen(80);
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, './public')));
 
 // For Passport
 app.use(
@@ -87,7 +92,6 @@ db.sequelize.sync(syncOptions).then(function() {
 
 // socket logic
 var server = require("http").createServer(app);
-var io = require("socket.io").listen(server);
 
 users = [];
 connections = [];
@@ -96,9 +100,9 @@ server.listen(process.env.PORT || 5000);
 console.log("server running");
 app.use(express.static("public"));
 
-// app.get("/", function (req, res) {
-//     res.sendFile(__dirname + "/index.html");
-// });
+app.get("/", function (req, res) {
+    res.sendFile(__dirname + "/views");
+});
 
 io.sockets.on("connection", function (socket) {
   connections.push(socket);
