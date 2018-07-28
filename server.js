@@ -5,6 +5,7 @@ var exphbs = require("express-handlebars");
 var passport = require("passport");
 var session = require("express-session");
 var mysql = require("mysql");
+var path = require("path");
 var connection;
 
 if (process.env.JAWSDB_URL) {
@@ -94,7 +95,7 @@ server.listen(process.env.PORT || 5000);
 console.log("server running");
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/index.html");
+    path.join(__dirname, "../public");
 });
 
 io.sockets.on("connection", function (socket) {
