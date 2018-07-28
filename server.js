@@ -1,32 +1,11 @@
 require("dotenv").config();
-// var express = require("express");
+var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var passport = require("passport");
 var session = require("express-session");
 var mysql = require("mysql");
-// var path = require("path");
-
-'use strict';
-
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
-
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
-});
-
+var path = require("path");
 
 var connection;
 
@@ -44,19 +23,14 @@ if (process.env.JAWSDB_URL) {
 
 var db = require("./models");
 
-// var app = express();
-// // var PORT = process.env.PORT || 3000;
-// var express = require('express');
 var app = express();
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
-
-// server.listen(80);
+var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+// app.use(express.static(path.join(__dirname, './public')));
 
 // For Passport
 app.use(
@@ -102,7 +76,7 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  app.listen(server, function() {
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
@@ -112,18 +86,19 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 // socket logic
-// var server = require("http").createServer(app);
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server);
 
 users = [];
 connections = [];
 
-// server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 4000);
 console.log("server running");
 app.use(express.static("public"));
 
-app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/views");
-});
+// app.get("/", function (req, res) {
+//     res.sendFile(__dirname + "/index.html");
+// });
 
 io.sockets.on("connection", function (socket) {
   connections.push(socket);

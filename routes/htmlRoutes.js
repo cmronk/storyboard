@@ -6,15 +6,15 @@ module.exports = function (app) {
 
 
   // Load example page and pass in an example by id
-  // app.get("/main/:id", function (req, res) {
-  //   db.Storyboard.findOne({
-  //     where: { id: req.params.id }
-  //   }).then(function (dbStoryboard) {
-  //     res.render("dashboard", {
-  //       Storyboards: dbStoryboard
-  //     });
-  //   });
-  // });
+  app.get("/main/:id", function (req, res) {
+    db.Storyboard.findOne({
+      where: { id: req.params.id }
+    }).then(function (dbStoryboard) {
+      res.render("dashboard", {
+        Storyboards: dbStoryboard
+      });
+    });
+  });
 
   // Load dashboard page
   app.get("/dashboard", function (req, res) {
