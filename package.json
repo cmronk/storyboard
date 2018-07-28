@@ -23,8 +23,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-sequelize": "^0.8.0",
+    "path": "^0.12.7",
     "sequelize": "^4.38.0",
-    "serve-favicon": "^2.5.0",
     "socket.io": "^2.1.1",
     "sql": "^0.78.0"
   },
@@ -48,5 +48,6 @@
   "bugs": {
     "url": "https://github.com/cmronk/storyboard/issues"
   },
-  "homepage": "https://github.com/cmronk/storyboard#readme"
+  "homepage": "https://github.com/cmronk/storyboard#readme",
+  "keywords": []
 }
