@@ -92,7 +92,7 @@ var io = require("socket.io").listen(server);
 users = [];
 connections = [];
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 5000);
 console.log("server running");
 app.use(express.static("public"));
 
