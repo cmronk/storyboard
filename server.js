@@ -24,7 +24,7 @@ if (process.env.JAWSDB_URL) {
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 5000 || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -94,10 +94,11 @@ connections = [];
 
 server.listen(process.env.PORT || 3000);
 console.log("server running");
+app.use(express.static("public"));
 
-app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/index.html");
-});
+// app.get("/", function (req, res) {
+//     res.sendFile(__dirname + "/index.html");
+// });
 
 io.sockets.on("connection", function (socket) {
   connections.push(socket);
