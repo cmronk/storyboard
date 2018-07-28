@@ -95,7 +95,7 @@ server.listen(process.env.PORT || 5000);
 console.log("server running");
 
 app.get("/", function (req, res) {
-    path.join(__dirname, "../public");
+    path.join(__dirname, "../views");
 });
 
 io.sockets.on("connection", function (socket) {
