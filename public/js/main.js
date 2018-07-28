@@ -14,8 +14,6 @@ $(document).ready(function () {
 
 // When user clicks add-btn- this works fully! :D
 $("#new-account").on("click", function (event) {
-    // event.preventDefault();
-
     // Make a newStoryline object
     var newUser = {
         firstname: $("#first_name").val(),
@@ -32,25 +30,9 @@ $("#new-account").on("click", function (event) {
             .val()
             .trim()
     };
-
-    // $("#first_name").val(""),
-    //     $("#last_name").val(""),
-    //     $("#username").val(""),
-    //     $("#password").val(""),
-    //     $("#email").val("");
-
-    // Send an AJAX POST-request with jQuery
-    $.post("/signup", newUser)
-        // On success, run the following code
-        .then(function (data) {
-            // Log the data we found
-            location.href = "/dashboard"
-            console.log(data);
-            //   location.reload();
-        });
 });
 
-// When user clicks add-btn- this works fully! :D
+// When user clicks add story button
 $("#create").on("click", function (event) {
     event.preventDefault();
 
@@ -78,6 +60,8 @@ $("#create").on("click", function (event) {
         });
 });
 
+// likes and dislikes counters
+// TODO firebase or put these in the database
 var like = 0;
 var dislike = 0;
 
@@ -91,4 +75,47 @@ $("#thumbs_down").on("click", function () {
     $(".dislike").text(dislike);
 });
 
+// Socket
+$(function () {
+    var socket = io.connect();
+    var $messageForm = $("#messageForm");
+    var $message = $("#message");
+    var $chat = $("#chat");
+    var $messageArea = $("#messageArea");
+    var $userFormArea = $("#userFormArea");
+    var $userForm = $("#userForm");
+    var $users = $("#users");
+    var $username = $("#username");
 
+    $messageForm.submit(function (event) {
+        event.preventDefault();
+        socket.emit("send message", $message.val());
+        $message.val("");
+    });
+
+    socket.on("new message", function (data) {
+        $chat.append('<div class="well"><strong>' + data.user + '</strong>: ' + data.msg + '</div>')
+    });
+
+    $userForm.submit(function (event) {
+        event.preventDefault();
+        socket.emit("new user", $username.val(), function (data) {
+            $messageArea.hide();
+
+            if (data) {
+                $userFormArea.hide();
+                $messageArea.show();
+            }
+        });
+        $username.val("");
+    });
+
+    socket.on("get users", function (data) {
+        var html = "";
+        for (i = 0; i < data.length; i++) {
+            html += '<li class="list-group-item">' + data[i] + '</li>';
+        }
+        $users.html(html);
+        console.log(users);
+    });
+})

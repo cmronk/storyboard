@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Storytime</title>
-    <link rel="shortcut icon" type="image.png" href="../public/img/icon.png">
+    <link rel="shortcut icon" type="image.png" href="public/img/icon.png">
     <!-- font -->
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <!-- materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
 
     <style>
         body {
@@ -44,9 +47,8 @@
         .input-field label {
             pointer-events: all;
         }
-
-        .signin container, .signup container {
-            border: 1px solid blue;
+        #chat-socket {
+            
         }
     </style>
 </head>
