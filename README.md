@@ -7,7 +7,7 @@ Creators:
 * Christine Ronk
 * Brian Stewart
 
-We've created a storytelling application that creates and authenticates user accounts, and allows verified users to create storylines, add pictures, explore genres and like/dislike current storylines.
+We've created a storytelling application that creates and authenticates user accounts, allows verified users to create storylines, add pictures, explore genres and like/dislike current storylines.
 
 Technologies utilized during this project include: 
 * [Materialize](https://materializecss.com/)
@@ -23,4 +23,4 @@ Future Updates we would like to implement include:
 
 Checkout the app [here](https://storyboardadventures.herokuapp.com/signin)
 
-![Screenshot](public/img/main.jpeg)
+![Screenshot](public/img/screenshot.png)
