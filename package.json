@@ -6,6 +6,7 @@
   "engines": {
     "npm": "5.7.1"
   },
+  "proxy": "http://localhost:5000/",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
