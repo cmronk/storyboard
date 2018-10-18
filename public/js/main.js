@@ -78,7 +78,7 @@ $("#thumbs_down").on("click", function () {
 // socket
 
 $(function () {
-    var socket = io.connect("https://pure-escarpment-15436.herokuapp.com/");
+    var socket = io.connect("https://storyboardadventures.herokuapp.com/");
     var $messageForm = $("#messageForm");
     var $message = $("#message");
     var $chat = $("#chat");
